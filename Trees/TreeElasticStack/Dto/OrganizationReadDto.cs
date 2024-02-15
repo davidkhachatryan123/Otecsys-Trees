@@ -1,4 +1,4 @@
-﻿namespace TreeElasticStack;
+﻿namespace TreeElasticStack.Dto;
 
 public class OrganizationReadDto
 {

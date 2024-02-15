@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using TreeElasticStack.Dto;
 
-namespace TreeElasticStack;
+namespace TreeElasticStack.Mappings;
 
 public class OrganizationMappingProfile : Profile
 {
   public OrganizationMappingProfile()
   {
-    // CreateMap<ServicesPricingCreateDto, ServicesPricing>();
+    CreateMap<Organization, OrganizationReadDto>();
+    CreateMap<OrganizationCreateDto, Organization>();
   }
 }

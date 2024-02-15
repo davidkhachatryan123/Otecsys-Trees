@@ -18,4 +18,7 @@ app.MapControllers();
 
 await SeedData.SeedIndices(app);
 
+if (app.Environment.IsDevelopment())
+  await SeedData.SeedTestData(app);
+
 await app.RunAsync();
