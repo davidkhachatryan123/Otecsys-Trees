@@ -1,65 +1,23 @@
 version: '3.4'
 
 services:
-  web-api-gw:
-    container_name: web-api-gw
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
+  tree-sql:
+    image: tree.sql:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: TreeSQL/Dockerfile
 
-  crm-api-gw:
-    container_name: crm-api-gw
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
+  tree-elasticstack:
+    image: tree.elasticstack:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: TreeElasticStack/Dockerfile
 
-  identity-server:
-    container_name: identity-server
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
+  db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
 
-  users-api:
-    container_name: users
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
+  elastic-search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
 
-  portfolio-api:
-    container_name: portfolio
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
-
-  pricing-api:
-    container_name: pricing
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
-
-  search-api:
-    container_name: search
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
-
-  storage-api:
-    container_name: storage
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
-
-  messenger-api:
-    container_name: messenger
-    entrypoint: tail -f /dev/null
-    volumes:
-      - ./:/app
-      - ~/.vsdbg:/remote_debugger:rw
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
