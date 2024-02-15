@@ -1,0 +1,194 @@
+version: '3.4'
+
+services:
+  web-api-gw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConfigFileDirectory=/app/configuration
+    ports:
+      - "8081:5000"
+    volumes:
+      - ./ApiGateways/Web.Bff:/app/configuration
+
+  crm-api-gw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - IdentityUrl=http://identity-server:5000
+      - ConfigFileDirectory=/app/configuration
+    ports:
+      - "8082:5000"
+    volumes:
+      - ./ApiGateways/Crm.Bff:/app/configuration
+
+  identity-server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000;https://+:5001
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${CERT_PASS}
+      - ConnectionStrings__IdentityDb=Server=db;Database=DavidStudio.Service.IdentityDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+      - IdentityServer_EmailConfirmation_URL=https://localhost:5011
+      - IdentityWebSpa=https://localhost:44300
+      - SpaClient=https://localhost:4200
+      - IdentityServer=https://localhost:5011
+      - UsersApiClient=http://localhost:5020
+      - PortfolioApiClient=http://localhost:5030
+      - PricingApiClient=http://localhost:5040
+      - StorageApiClient=http://localhost:5070
+      - MessengerApiClient=http://localhost:5080
+    ports:
+      - "5010:5000"
+      - "5011:5001"
+    volumes:
+      - ../certs:/https:ro
+
+  identity-server-client:
+    build:
+      args:
+        - host=localhost
+    ports:
+      - "44300:443"
+    volumes:
+      - ../certs:/https:ro
+
+  users-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+      - Services__IdentityServerGrpcUri=http://identity-server:5005
+      - Identity__Url=http://identity-server:5000
+      - Identity__ExternalUrl=http://localhost:5010
+      - IdentityServer_EmailConfirmation_URL=http://localhost:5020
+    ports:
+      - "5020:5000"
+
+  portfolio-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__PortfolioDb=Server=db;Database=DavidStudio.Service.Portfolio;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+      - Services__StorageUri=http://storage-api:5009
+      - Identity__Url=http://identity-server:5000
+      - Identity__ExternalUrl=http://localhost:5010
+    ports:
+      - "5030:5000"
+
+  pricing-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__PricingDb=Server=db;Database=DavidStudio.Service.PricingDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
+      - Identity__Url=http://identity-server:5000
+      - Identity__ExternalUrl=http://localhost:5010
+    ports:
+      - "5040:5000"
+
+  search-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ElasticSearchUrl=http://elastic-search:9200
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+    ports:
+      - "5050:5000"
+
+  storage-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${CERT_PASS}
+      - ConnectionStrings__StorageDb=Server=db;Database=DavidStudio.Service.Storage;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+      - Resources_Url=http://localhost:5070/Resources
+      - StorageOptions__StoragePath=/storage
+      - Identity__Url=http://identity-server:5000
+      - Identity__ExternalUrl=http://localhost:5010
+    volumes:
+        - storage:/storage
+        - ../certs:/https:ro
+    ports:
+      - "5070:5000"
+      - "5071:5001"
+      - "5079:5009"
+
+  messenger-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__MessagesDb=Server=db;Database=DavidStudio.Service.MessagesDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
+      - ConnectionStrings__EventBus=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@${EXTERNAL_HOST}:5672/
+      - Identity__Url=http://identity-server:5000
+      - Identity__ExternalUrl=http://localhost:5010
+    ports:
+      - "5080:5000"
+    volumes:
+      # - $APPDATA/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - $HOME/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+
+  db:
+    env_file:
+      - .env
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+
+  rabbitmq:
+    env_file:
+      - .env
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - mqdata:/var/lib/rabbitmq
+      - mqlogs:/var/log/rabbitmq
+
+  elastic-search:
+    labels:
+      co.elastic.logs/module: elasticsearch
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:
+      - node.name=es01
+      - cluster.name=elastic-cluster
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.license.self_generated.type=basic
+    mem_limit: 2048M
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  kibana:
+    labels:
+      co.elastic.logs/module: kibana
+    volumes:
+      - kibanadata:/usr/share/kibana/data
+    ports:
+      - 5601:5601
+    environment:
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elastic-search:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+
+volumes:
+  storage:
+  sqldata:
+  mqdata:
+  mqlogs:
+  esdata01:
+  kibanadata:
