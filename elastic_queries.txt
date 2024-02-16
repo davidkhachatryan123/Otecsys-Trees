@@ -1,0 +1,102 @@
+DELETE organizations_tree
+
+PUT organizations_tree
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "path_tree": {
+          "tokenizer": "hierarchy"
+        },
+        "path_tree_reversed": {
+          "tokenizer": "hierarchy_reversed"
+        }
+      },
+      "tokenizer": {
+        "hierarchy": {
+          "type": "path_hierarchy",
+          "delimiter": "/"
+        },
+        "hierarchy_reversed": {
+          "type": "path_hierarchy",
+          "delimiter": "/",
+          "reverse": "true"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "organization_path": {
+        "type": "text",
+        "fields": {
+          "tree": {
+            "type": "text",
+            "analyzer": "path_tree"
+          },
+          "tree_reversed": {
+            "type": "text",
+            "analyzer": "path_tree_reversed"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+POST organizations_tree/_analyze
+{
+  "analyzer": "path_tree_reversed",
+  "text": "one/two/three/four/five"
+}
+
+
+POST organizations_tree/_doc/1
+{
+  "organization_path": "/1"
+}
+
+POST organizations_tree/_doc/2
+{
+  "organization_path": "/1/2"
+}
+
+POST organizations_tree/_doc/3
+{
+  "organization_path": "/1/2/3"
+}
+
+POST organizations_tree/_doc/4
+{
+  "organization_path": "/1/4"
+}
+
+POST organizations_tree/_doc/5
+{
+  "organization_path": "/1/2/5"
+}
+
+
+GET organizations_tree/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET organizations_tree/_search
+{
+  "query": {
+    "bool" : {
+      "must" : {
+        "match" : { "organization_path" : "5" }
+      },
+      "filter": {
+        "regexp": {
+          "organization_path.tree": ".*2.*"
+        }
+      }
+    }
+  }
+}
