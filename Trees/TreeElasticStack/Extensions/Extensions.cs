@@ -1,5 +1,7 @@
-﻿using Elasticsearch.Net;
+﻿using AutoMapper;
+using Elasticsearch.Net;
 using Nest;
+using TreeElasticStack.Mappings;
 
 namespace TreeElasticStack.Extensions;
 
@@ -29,11 +31,24 @@ public static class Extensions
 
     var connectionSettings = new ConnectionSettings(connectionPool)
         .DefaultIndex("organizations_tree")
-        .EnableApiVersioningHeader();
+        .EnableApiVersioningHeader()
+        .DisableDirectStreaming();
 
     var client = new ElasticClient(connectionSettings);
 
     services.AddSingleton(client);
+
+    return services;
+  }
+
+  public static IServiceCollection AddMappings(this IServiceCollection services)
+  {
+    var mapperConfig = new MapperConfiguration(map =>
+    {
+      map.AddProfile<OrganizationMappingProfile>();
+    });
+
+    services.AddSingleton(mapperConfig.CreateMapper());
 
     return services;
   }

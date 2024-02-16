@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Nest;
 using TreeElasticStack.Services;
+using TreeElasticStack.Services.Repositories;
 
 namespace TreeElasticStack.Data;
 
@@ -55,19 +56,25 @@ public class SeedData
         }
     }
 
-    public static async Task SeedTestData(WebApplication app)
+    public static void SeedTestData(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
 
-        IMapper mapper =
-            scope.ServiceProvider.GetRequiredService<IMapper>();
+        var elasticClient = scope.ServiceProvider.GetRequiredService<ElasticClient>();
 
-        CompositeOrganization office1 = new("Office number 1");
-        CompositeOrganization office2 = new("Office number 2");
-        CompositeOrganization office3 = new("Office number 3");
-        CompositeOrganization office4 = new("Office number 4");
-        CompositeOrganization office5 = new("Office number 5");
+        if (elasticClient.Count<Organization>().Count > 0) return;
 
+        var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+        var orgRepo = scope.ServiceProvider.GetRequiredService<IOrganizationRepository>();
+
+        CompositeOrganization root = new StorableOrganization("root", orgRepo);
+        CompositeOrganization office1 = new StorableOrganization("Office number 1", orgRepo);
+        CompositeOrganization office2 = new StorableOrganization("Office number 2", orgRepo);
+        CompositeOrganization office3 = new StorableOrganization("Office number 3", orgRepo);
+        CompositeOrganization office4 = new StorableOrganization("Office number 4", orgRepo);
+        CompositeOrganization office5 = new StorableOrganization("Office number 5", orgRepo);
+
+        root.Add(office1);
         office1.Add(office2);
         office2.Add(office3);
         office1.Add(office4);

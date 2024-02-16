@@ -1,4 +1,5 @@
-﻿namespace TreeElasticStack.Services;
+﻿
+namespace TreeElasticStack.Services;
 
 public class CompositeOrganization(string name) : OrganizationExtension(name)
 {
@@ -6,6 +7,10 @@ public class CompositeOrganization(string name) : OrganizationExtension(name)
 
   public override void Add(Organization org)
   {
+    org.Id = Guid.NewGuid().ToString();
+    org.ParentId = Id;
+    org.Path = $"{Path}/{org.Id}";
+
     _organizations.Add(org);
   }
 

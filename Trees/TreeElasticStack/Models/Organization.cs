@@ -5,13 +5,14 @@ namespace TreeElasticStack;
 [ElasticsearchType(RelationName = "organization")]
 public class Organization
 {
-  public int Id { get; set; }
+  [Text(Name = "id")]
+  public string Id { get; set; } = null!;
 
   [Text(Name = "name")]
   public string Name { get; set; } = null!;
 
   [Text(Name = "parent_id")]
-  public int ParentId { get; set; }
+  public string? ParentId { get; set; }
 
   [Text(Name = "path")]
   public string Path { get; set; } = null!;
