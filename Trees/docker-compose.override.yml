@@ -5,7 +5,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5000
-      - ElasticSearchUrl=http://elastic-search:9200
+      - ConnectionStrings__OrganizationDb=Server=db;Database=Trees.OrganizationDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
     ports:
       - "5010:5000"
 
