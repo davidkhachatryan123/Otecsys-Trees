@@ -16,15 +16,16 @@ builder.Services.AddDefaultSwagger();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-  app.UseDefaultSwagger(builder.Configuration);
-
 app.MapControllers();
 
 if (app.Environment.IsDevelopment())
 {
+  app.UseDefaultSwagger(builder.Configuration);
+
   app.MigrateDatabase();
   await SeedData.SeedDevDataAsync(app);
 }
 
 await app.RunAsync();
+
+namespace TreeSQL { public partial class Program { public Program() { } } }

@@ -25,3 +25,5 @@ if (app.Environment.IsDevelopment())
   SeedData.SeedTestData(app);
 
 await app.RunAsync();
+
+namespace TreeElasticStack { public partial class Program { public Program() { } } }
