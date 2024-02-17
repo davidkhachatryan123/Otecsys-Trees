@@ -11,8 +11,8 @@ public class TestDataElasticStack : IEnumerable<object[]>
     //                          |   |
     //                          |   |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     //                          |                                               |
-    yield return new object[] { "c4c5fdfa-f209-4b02-8a47-6359cc9b3af1", new[] { "b13f0b8b-9bd7-4452-bca9-11b2f1f33a35", "b13f0b8b-9bd7-4452-bca9-11b2f1f33a35", "a925b209-be58-4d86-80dc-e9d026baf9e3", "e010e128-2d18-4044-b326-6add66057195" } };
-    yield return new object[] { "b13f0b8b-9bd7-4452-bca9-11b2f1f33a35", new[] { "c31992eb-461b-4705-b508-e3995b1b10af", "e010e128-2d18-4044-b326-6add66057195" } };
+    yield return new object[] { "8ccb96af-ee2e-4f58-88ca-100efd1dacdb", new[] { "afcded51-4ca4-4417-a63b-11a8e6135c62", "005ac52d-92f2-4baa-adcc-b2bc71cab7c0", "1670a752-c7f6-4a78-b8d1-b0d961ec15fc", "9685d767-7734-48a1-a2cd-b1098db6ec16" } };
+    yield return new object[] { "afcded51-4ca4-4417-a63b-11a8e6135c62", new[] { "005ac52d-92f2-4baa-adcc-b2bc71cab7c0", "9685d767-7734-48a1-a2cd-b1098db6ec16" } };
   }
 
   IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

@@ -9,9 +9,10 @@ public class TestDataSQL : IEnumerable<object[]>
     //                  Parent ID   Children IDs
     //                          ^   ^
     //                          |   |
-    //                          |_  |_ _ _ _ _ _ _ _ _ _ _ _
-    yield return new object[] { 26, new[] { 27, 28, 29, 30 } };
-    yield return new object[] { 27, new[] { 28, 30 } };
+    //                          |    _ _ _ _
+    //                          |           |
+    yield return new object[] { 1, new[] { 2, 3, 4, 5 } };
+    yield return new object[] { 2, new[] { 3, 5 } };
   }
 
   IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
