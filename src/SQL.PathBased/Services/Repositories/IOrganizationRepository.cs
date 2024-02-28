@@ -1,6 +1,6 @@
-﻿using TreeSQL.Models;
+﻿using SQL.PathBased.Models;
 
-namespace TreeSQL.Services.Repositories;
+namespace SQL.PathBased.Services.Repositories;
 
 public interface IOrganizationRepository
 {

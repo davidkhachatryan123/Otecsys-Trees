@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TreeSQL.Models;
+using SQL.PathBased.Models;
 
-namespace TreeSQL.Database;
+namespace SQL.PathBased.Database;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {

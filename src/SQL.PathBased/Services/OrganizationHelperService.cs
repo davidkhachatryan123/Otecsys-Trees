@@ -1,14 +1,15 @@
-﻿using TreeSQL.Services.Repositories;
+﻿using Common.Interfaces;
+using SQL.PathBased.Services.Repositories;
 
-namespace TreeSQL.Services;
+namespace SQL.PathBased.Services;
 
-public class OrganizationHelperService(IOrganizationRepository organizationRepository)
+public class OrganizationHelperService(IOrganizationRepository organizationRepository) : IOrganizationOperations<int>
 {
   private readonly IOrganizationRepository _organizationRepository = organizationRepository;
 
-  public async Task<bool> IsChildOfAsync(int id, int parentId)
+  public async Task<bool> CheckAccess(int nodeId, int parentId)
   {
-    var org = await _organizationRepository.GetAsync(id);
+    var org = await _organizationRepository.GetAsync(nodeId);
 
     return org is not null && org.Path.Contains(parentId.ToString());
   }

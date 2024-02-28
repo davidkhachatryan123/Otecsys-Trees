@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TreeSQL.Services;
+using SQL.PathBased.Services;
 
-namespace TreeSQL.Controllers;
+namespace SQL.PathBased.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -10,7 +10,7 @@ public class TreeController(OrganizationHelperService organizationHelper) : Cont
   private readonly OrganizationHelperService _organizationHelper = organizationHelper;
 
   [HttpGet]
-  [Route("{childId}/" + nameof(IsChildOf))]
-  public async Task<IActionResult> IsChildOf([FromRoute] int childId, [FromQuery] int parnetId)
-    => Ok(await _organizationHelper.IsChildOfAsync(childId, parnetId));
+  [Route("{nodeId}/" + nameof(CheckAccess))]
+  public async Task<IActionResult> CheckAccess([FromRoute] int nodeId, [FromQuery] int parnetId)
+    => Ok(await _organizationHelper.CheckAccess(nodeId, parnetId));
 }

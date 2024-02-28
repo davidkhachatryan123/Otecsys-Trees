@@ -1,6 +1,4 @@
-﻿using SQL.PathBased.Models;
-
-namespace SQL.PathBased.Services.OrganizationsComposite;
+﻿namespace ElasticStack.Services.OrganizationsComposite;
 
 public abstract class OrganizationExtension : Organization
 {

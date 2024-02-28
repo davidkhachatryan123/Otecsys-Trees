@@ -2,7 +2,7 @@
 
 namespace Trees.Test.Data;
 
-public class TestDataSQL : IEnumerable<object[]>
+public class TestDataSQLPathBased : IEnumerable<object[]>
 {
   public IEnumerator<object[]> GetEnumerator()
   {

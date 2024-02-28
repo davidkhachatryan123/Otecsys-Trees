@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TreeSQL.Database;
-using TreeSQL.Models;
-using TreeSQL.Services.OrganizationsComposite;
-using TreeSQL.Services.Repositories;
+using SQL.PathBased.Database;
+using SQL.PathBased.Models;
+using SQL.PathBased.Services.OrganizationsComposite;
 
-namespace TreeSQL;
+namespace SQL.PathBased.Data;
 
 public static class SeedData
 {
@@ -15,9 +14,7 @@ public static class SeedData
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     if (await context.Organizations.AnyAsync()) return;
 
-    var repo = scope.ServiceProvider.GetRequiredService<IOrganizationRepository>();
     var root = scope.ServiceProvider.GetRequiredService<CompositeOrganization>();
-
     var org1 = await root.AddAsync(new Organization("Office 1"));
     var org2 = await org1.AddAsync(new Organization("Office 2"));
     var org3 = await org2.AddAsync(new Organization("Office 3"));

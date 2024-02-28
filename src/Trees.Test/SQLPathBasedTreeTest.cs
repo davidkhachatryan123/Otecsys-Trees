@@ -1,17 +1,16 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Trees.Test.Data;
 
 namespace Trees.Test;
 
-public class TreeSQLTest(WebApplicationFactory<TreeSQL.Program> factory)
-    : IClassFixture<WebApplicationFactory<TreeSQL.Program>>
+public class SQLPathBasedTreeTest(WebApplicationFactory<SQL.PathBased.Program> factory)
+    : IClassFixture<WebApplicationFactory<SQL.PathBased.Program>>
 {
-    private readonly WebApplicationFactory<TreeSQL.Program> _factory = factory;
+    private readonly WebApplicationFactory<SQL.PathBased.Program> _factory = factory;
 
     [Theory]
-    [ClassData(typeof(TestDataSQL))]
-    public async void IsChildOf(int parent_ID, int[] children_IDs)
+    [ClassData(typeof(TestDataSQLPathBased))]
+    public async void CheckAccess(int parent_ID, int[] children_IDs)
     {
         // Arrange
         var client = _factory.CreateClient();
@@ -19,7 +18,7 @@ public class TreeSQLTest(WebApplicationFactory<TreeSQL.Program> factory)
         foreach (int childID in children_IDs)
         {
             // Act
-            var response = await client.GetAsync($"/api/Tree/{childID}/IsChildOf?parnetId={parent_ID}");
+            var response = await client.GetAsync($"/api/tree/{childID}/checkAccess?parnetId={parent_ID}");
 
             // Assert
             response.EnsureSuccessStatusCode();

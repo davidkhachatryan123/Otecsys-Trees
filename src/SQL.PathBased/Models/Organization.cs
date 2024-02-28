@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TreeSQL.Models;
+namespace SQL.PathBased.Models;
 
 public class Organization
 {

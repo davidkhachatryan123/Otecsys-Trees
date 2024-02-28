@@ -1,8 +1,9 @@
-using TreeSQL;
-using TreeSQL.Extensions;
-using TreeSQL.Services;
-using TreeSQL.Services.OrganizationsComposite;
-using TreeSQL.Services.Repositories;
+using SQL.PathBased.Extensions;
+using SQL.PathBased.Services;
+using SQL.PathBased.Services.OrganizationsComposite;
+using SQL.PathBased.Services.Repositories;
+using Common.Extensions;
+using SQL.PathBased.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,4 +28,4 @@ if (app.Environment.IsDevelopment())
 
 await app.RunAsync();
 
-namespace TreeSQL { public partial class Program { public Program() { } } }
+namespace SQL.PathBased { public partial class Program { public Program() { } } }

@@ -12,17 +12,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data/" />
+    <Folder Include="Services/OrganizationComposite/" />
     <Folder Include="Services/Repositories/" />
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include ="Trees.Test"/>
+    <InternalsVisibleTo Include="Trees.Test" />
   </ItemGroup>
 </Project>

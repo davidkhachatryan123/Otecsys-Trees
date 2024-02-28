@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TreeSQL.Database;
-using TreeSQL.Models;
+using SQL.PathBased.Database;
+using SQL.PathBased.Models;
 
-namespace TreeSQL.Services.Repositories;
+namespace SQL.PathBased.Services.Repositories;
 
-public class OrganizationRepository(ApplicationDbContext context) : IOrganizationRepository
+public class OrganizationRepository(ApplicationDbContext appDbContext) : IOrganizationRepository
 {
-  private readonly ApplicationDbContext _context = context;
+  private readonly ApplicationDbContext _context = appDbContext;
 
   public async Task<IReadOnlyCollection<Organization>> GetAllAsync()
     => await _context.Organizations.ToArrayAsync();
@@ -20,7 +20,7 @@ public class OrganizationRepository(ApplicationDbContext context) : IOrganizatio
     if (tmpOrg is not null) return null;
 
     await _context.Organizations.AddAsync(org);
-    await context.SaveChangesAsync();
+    await _context.SaveChangesAsync();
     return org;
   }
 
@@ -30,6 +30,6 @@ public class OrganizationRepository(ApplicationDbContext context) : IOrganizatio
     if (org is null) return;
 
     _context.Organizations.Remove(org);
-    await context.SaveChangesAsync();
+    await _context.SaveChangesAsync();
   }
 }

@@ -1,7 +1,7 @@
-﻿using SQL.PathBased.Models;
-using SQL.PathBased.Services.Repositories;
+﻿
+using ElasticStack.Services.Repositories;
 
-namespace SQL.PathBased.Services.OrganizationsComposite;
+namespace ElasticStack.Services.OrganizationsComposite;
 
 public class CompositeOrganization(IOrganizationRepository organizationRepository) : OrganizationExtension
 {
@@ -11,10 +11,11 @@ public class CompositeOrganization(IOrganizationRepository organizationRepositor
 
   public override async Task<CompositeOrganization> AddAsync(Organization org)
   {
-    org.ParentId = Id ?? -1;
-    org.Path = Id is not null ? $"{Path}/{Id}" : "";
+    org.Id = Guid.NewGuid().ToString();
+    org.ParentId = Id;
+    org.Path = $"{Path}/{org.Id}";
 
-    await _organizationRepository.CreateAsync(org);
+    await _organizationRepository.IndexAsync(org);
 
     _organizations.Add(org);
 
