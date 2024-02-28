@@ -18,16 +18,10 @@ public static class SeedData
     var repo = scope.ServiceProvider.GetRequiredService<IOrganizationRepository>();
     var root = scope.ServiceProvider.GetRequiredService<CompositeOrganization>();
 
-    var org1 = new CompositeOrganization(repo) { Name = "Office number 1" };
-    var org2 = new CompositeOrganization(repo) { Name = "Office number 2" };
-    var org3 = new CompositeOrganization(repo) { Name = "Office number 3" };
-    var org4 = new CompositeOrganization(repo) { Name = "Office number 4" };
-    var org5 = new CompositeOrganization(repo) { Name = "Office number 5" };
-
-    await root.AddAsync(org1);
-    await org1.AddAsync(org2);
-    await org2.AddAsync(org3);
-    await org1.AddAsync(org4);
-    await org2.AddAsync(org5);
+    var org1 = await root.AddAsync(new Organization("Office 1"));
+    var org2 = await org1.AddAsync(new Organization("Office 2"));
+    var org3 = await org2.AddAsync(new Organization("Office 3"));
+    var org4 = await org1.AddAsync(new Organization("Office 4"));
+    var org5 = await org2.AddAsync(new Organization("Office 5"));
   }
 }

@@ -9,18 +9,25 @@ public class CompositeOrganization(IOrganizationRepository organizationRepositor
 
   private readonly List<Organization> _organizations = [];
 
-  public override async Task AddAsync(Organization org)
+  public override async Task<CompositeOrganization> AddAsync(Organization org)
   {
     org.ParentId = Id ?? -1;
     org.Path = Id is not null ? $"{Path}/{Id}" : "";
     var result = await _organizationRepository.CreateAsync(org);
 
     _organizations.Add(org);
+
+    return new CompositeOrganization(_organizationRepository)
+    {
+      Id = org.Id,
+      Name = org.Name,
+      ParentId = org.ParentId,
+      Path = org.Path
+    };
   }
 
-  public override async Task RemoveAsync(Organization org)
+  public override Task<CompositeOrganization> RemoveAsync(Organization org)
   {
-    await _organizationRepository.DeleteAsync(org.Id);
-    _organizations.Remove(org);
+    throw new NotImplementedException();
   }
 }
