@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Xb8gBnl7iJJbsBrO6P0h8V5EutC77EttHhHIFXt/EJo=",
+  "Source": "ElasticStack",
+  "BasePath": "_content/ElasticStack",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

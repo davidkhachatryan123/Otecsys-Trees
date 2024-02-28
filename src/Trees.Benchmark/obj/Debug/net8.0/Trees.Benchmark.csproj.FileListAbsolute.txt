@@ -1,0 +1,15 @@
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/bin/Debug/net8.0/Trees.Benchmark
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/bin/Debug/net8.0/Trees.Benchmark.deps.json
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/bin/Debug/net8.0/Trees.Benchmark.runtimeconfig.json
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/bin/Debug/net8.0/Trees.Benchmark.dll
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/bin/Debug/net8.0/Trees.Benchmark.pdb
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.GeneratedMSBuildEditorConfig.editorconfig
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.AssemblyInfoInputs.cache
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.AssemblyInfo.cs
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.csproj.CoreCompileInputs.cache
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.sourcelink.json
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.dll
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/refint/Trees.Benchmark.dll
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.pdb
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/Trees.Benchmark.genruntimeconfig.cache
+/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Benchmark/obj/Debug/net8.0/ref/Trees.Benchmark.dll

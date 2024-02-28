@@ -1,0 +1,364 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Test/Trees.Test.csproj": {}
+  },
+  "projects": {
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj",
+        "projectName": "Common",
+        "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj",
+        "packagesPath": "/Users/davidkhachatryan/.nuget/packages/",
+        "outputPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/davidkhachatryan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/ElasticStack.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/ElasticStack.csproj",
+        "projectName": "ElasticStack",
+        "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/ElasticStack.csproj",
+        "packagesPath": "/Users/davidkhachatryan/.nuget/packages/",
+        "outputPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/davidkhachatryan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/SQL.ClosureTable.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/SQL.ClosureTable.csproj",
+        "projectName": "SQL.ClosureTable",
+        "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/SQL.ClosureTable.csproj",
+        "packagesPath": "/Users/davidkhachatryan/.nuget/packages/",
+        "outputPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/davidkhachatryan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/SQL.PathBased.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/SQL.PathBased.csproj",
+        "projectName": "SQL.PathBased",
+        "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/SQL.PathBased.csproj",
+        "packagesPath": "/Users/davidkhachatryan/.nuget/packages/",
+        "outputPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/davidkhachatryan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Common/Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Test/Trees.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Test/Trees.Test.csproj",
+        "projectName": "Trees.Test",
+        "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Test/Trees.Test.csproj",
+        "packagesPath": "/Users/davidkhachatryan/.nuget/packages/",
+        "outputPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/Trees.Test/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/davidkhachatryan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/ElasticStack.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/ElasticStack/ElasticStack.csproj"
+              },
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/SQL.ClosureTable.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.ClosureTable/SQL.ClosureTable.csproj"
+              },
+              "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/SQL.PathBased.csproj": {
+                "projectPath": "/Users/davidkhachatryan/Documents/Development/Trees-Otecsys/src/SQL.PathBased/SQL.PathBased.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

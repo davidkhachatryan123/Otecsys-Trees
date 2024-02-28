@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  tree-sql-path-based:
+    container_name: tree-sql-path-based
+    entrypoint: tail -f /dev/null
+    volumes:
+      - ./:/app
+      - ~/.vsdbg:/remote_debugger:rw
+
+  tree-sql-closure-table:
+    container_name: tree-sql-closure-table
+    entrypoint: tail -f /dev/null
+    volumes:
+      - ./:/app
+      - ~/.vsdbg:/remote_debugger:rw
+
+  tree-elasticstack:
+    container_name: tree-elasticstack
+    entrypoint: tail -f /dev/null
+    volumes:
+      - ./:/app
+      - ~/.vsdbg:/remote_debugger:rw
