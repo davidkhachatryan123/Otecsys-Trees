@@ -50,7 +50,7 @@ public class SeedData
             );
 
             if (!createIndexResponse.Acknowledged)
-                throw new Exception("Error was occurred in ElasticSearch when trying to create indices");
+                throw new Exception("Error was occurred in ElasticSearch when was trying to create indices");
         }
     }
 
