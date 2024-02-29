@@ -1,6 +1,32 @@
+using SQL.ClosureTable.Extensions;
+using SQL.ClosureTable.Services;
+using SQL.ClosureTable.Services.OrganizationsComposite;
+using SQL.ClosureTable.Services.Repositories;
+using Common.Extensions;
+using SQL.ClosureTable.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDatabase(builder.Configuration);
+builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<IOrganizationClosureRepsotory, OrganizationClosureRepsotory>();
+builder.Services.AddScoped<OrganizationHelperService>();
+builder.Services.AddTransient<CompositeOrganization>();
+builder.Services.AddControllers();
+builder.Services.AddDefaultSwagger();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
-app.Run();
+if (app.Environment.IsDevelopment())
+{
+  app.UseDefaultSwagger(builder.Configuration);
+
+  app.MigrateDatabase();
+  await SeedData.SeedDevDataAsync(app);
+}
+
+await app.RunAsync();
+
+namespace SQL.ClosureTable { public partial class Program { public Program() { } } }
