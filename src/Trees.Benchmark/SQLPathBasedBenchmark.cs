@@ -6,13 +6,16 @@ using SQL.PathBased.Database;
 namespace Trees.Benchmark;
 
 [MemoryDiagnoser]
+[KeepBenchmarkFiles]
 public class SQLPathBasedBenchmark
 {
   public static IEnumerable<object[]> Data()
   {
-    yield return new object[] { 1, 2 };
-    yield return new object[] { 1, 5 };
-    yield return new object[] { 2, 5 };
+    yield return new object[] { 100, 1 };
+    yield return new object[] { 100, 99 };
+    yield return new object[] { 100, 50 };
+    yield return new object[] { 2, 1 };
+    yield return new object[] { 50, 51 };
   }
 
   private ApplicationDbContext _context = null!;

@@ -6,13 +6,16 @@ using SQL.ClosureTable.Database;
 namespace Trees.Benchmark;
 
 [MemoryDiagnoser]
+[KeepBenchmarkFiles]
 public class SQLClosureTableBenchmark
 {
   public static IEnumerable<object[]> Data()
   {
-    yield return new object[] { 2, 3 };
-    yield return new object[] { 2, 6 };
-    yield return new object[] { 3, 6 };
+    yield return new object[] { 100, 1 };
+    yield return new object[] { 100, 99 };
+    yield return new object[] { 100, 50 };
+    yield return new object[] { 2, 1 };
+    yield return new object[] { 50, 51 };
   }
 
   private ApplicationDbContext _context = null!;

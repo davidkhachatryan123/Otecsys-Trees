@@ -7,13 +7,16 @@ using Nest;
 namespace Trees.Benchmark;
 
 [MemoryDiagnoser]
+[KeepBenchmarkFiles]
 public class ElasticStackTableBenchmark
 {
   public static IEnumerable<object[]> Data()
   {
-    yield return new object[] { "b9cc3caa-6f46-4295-852d-1ccc55ab9fb3", "dccf3fa7-0552-46ba-978d-6af4d0c8540e" };
-    yield return new object[] { "b9cc3caa-6f46-4295-852d-1ccc55ab9fb3", "502875f9-8320-425e-94e7-c0b8cd0ca627" };
-    yield return new object[] { "dccf3fa7-0552-46ba-978d-6af4d0c8540e", "502875f9-8320-425e-94e7-c0b8cd0ca627" };
+    yield return new object[] { "100", "1" };
+    yield return new object[] { "100", "99" };
+    yield return new object[] { "100", "50" };
+    yield return new object[] { "2", "1" };
+    yield return new object[] { "50", "51" };
   }
 
   private ElasticClient _client = null!;
