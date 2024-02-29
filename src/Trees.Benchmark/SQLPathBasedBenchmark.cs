@@ -11,6 +11,9 @@ public class SQLPathBasedBenchmark
 {
   public static IEnumerable<object[]> Data()
   {
+    //                 Children ID   Parent ID
+    //                           ^   ^
+    //                           |   |
     yield return new object[] { 100, 1 };
     yield return new object[] { 100, 99 };
     yield return new object[] { 100, 50 };
