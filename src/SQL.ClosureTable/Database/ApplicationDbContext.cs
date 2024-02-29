@@ -23,6 +23,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
       .WithMany()
       .OnDelete(DeleteBehavior.NoAction);
 
+    modelBuilder.Entity<OrganizationClosure>()
+      .HasIndex(c => c.NodeId);
+
+    modelBuilder.Entity<OrganizationClosure>()
+      .HasIndex(c => c.ParentId);
+
     modelBuilder.Entity<Organization>()
       .HasData(new Organization() { Id = 1, Name = "root" });
   }
