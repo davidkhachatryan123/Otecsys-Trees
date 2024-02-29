@@ -3,7 +3,7 @@ version: '3.4'
 services:
   tree-sql-path-based:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:5000
       - ConnectionStrings__PathBasedOrganizationDb=Server=db;Database=Trees.PathBased.OrganizationDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
     ports:
@@ -11,7 +11,7 @@ services:
 
   tree-sql-closure-table:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:5000
       - ConnectionStrings__ClosureTableOrganizationDb=Server=db;Database=Trees.ClosureTable.OrganizationDb;User=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;
     ports:
@@ -19,7 +19,7 @@ services:
 
   tree-elasticstack:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:5000
       - ElasticSearchUrl=http://elastic-search:9200
     ports:

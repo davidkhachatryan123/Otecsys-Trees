@@ -3,6 +3,8 @@ version: '3.4'
 services:
   tree-sql-path-based:
     container_name: tree-sql-path-based
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     entrypoint: tail -f /dev/null
     volumes:
       - ./:/app
@@ -10,6 +12,8 @@ services:
 
   tree-sql-closure-table:
     container_name: tree-sql-closure-table
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     entrypoint: tail -f /dev/null
     volumes:
       - ./:/app
@@ -17,6 +21,8 @@ services:
 
   tree-elasticstack:
     container_name: tree-elasticstack
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     entrypoint: tail -f /dev/null
     volumes:
       - ./:/app
