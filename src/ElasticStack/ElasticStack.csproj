@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Data/" />
-    <Folder Include="Services/OrganizationComposite/" />
     <Folder Include="Services/Repositories/" />
   </ItemGroup>
 

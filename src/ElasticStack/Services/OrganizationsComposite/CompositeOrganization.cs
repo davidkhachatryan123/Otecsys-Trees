@@ -9,9 +9,10 @@ public class CompositeOrganization(IOrganizationRepository organizationRepositor
 
   private readonly List<Organization> _organizations = [];
 
-  public override async Task<CompositeOrganization> AddAsync(Organization org)
+  public override async Task<CompositeOrganization> AddAsync(Organization org, bool enableGuid = true)
   {
-    org.Id = Guid.NewGuid().ToString();
+    if (enableGuid)
+      org.Id = Guid.NewGuid().ToString();
     org.ParentId = Id;
     org.Path = $"{Path}/{org.Id}";
 
