@@ -4,11 +4,13 @@ using SQL.PathBased.Services.OrganizationsComposite;
 using SQL.PathBased.Services.Repositories;
 using Common.Extensions;
 using SQL.PathBased.Data;
+using Common.Interfaces;
+using SQL.PathBased.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDatabase(builder.Configuration);
-builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<IOrganizationRepository<Organization>, OrganizationRepository>();
 builder.Services.AddScoped<OrganizationHelperService>();
 builder.Services.AddTransient<CompositeOrganization>();
 builder.Services.AddControllers();

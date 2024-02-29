@@ -1,4 +1,5 @@
-﻿using SQL.ClosureTable.Database;
+﻿using Common.Interfaces;
+using SQL.ClosureTable.Database;
 using SQL.ClosureTable.Models;
 using SQL.ClosureTable.Services.Repositories;
 
@@ -6,12 +7,12 @@ namespace SQL.ClosureTable.Services.OrganizationsComposite;
 
 public class CompositeOrganization
   (
-    IOrganizationRepository organizationRepository,
+    IOrganizationRepository<Organization> organizationRepository,
     IOrganizationClosureRepsotory organizationClosureRepsotory,
     ApplicationDbContext context
   ) : OrganizationExtension
 {
-  private readonly IOrganizationRepository _organizationRepository = organizationRepository;
+  private readonly IOrganizationRepository<Organization> _organizationRepository = organizationRepository;
   private readonly IOrganizationClosureRepsotory _organizationClosureRepsotory = organizationClosureRepsotory;
   private readonly ApplicationDbContext _context = context;
 

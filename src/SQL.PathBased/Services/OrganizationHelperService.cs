@@ -1,11 +1,14 @@
 ﻿using Common.Interfaces;
+using SQL.PathBased.Models;
 using SQL.PathBased.Services.Repositories;
 
 namespace SQL.PathBased.Services;
 
-public class OrganizationHelperService(IOrganizationRepository organizationRepository) : IOrganizationOperations<int>
+public class OrganizationHelperService
+  (IOrganizationRepository<Organization> organizationRepository)
+    : IOrganizationOperations<int>
 {
-  private readonly IOrganizationRepository _organizationRepository = organizationRepository;
+  private readonly IOrganizationRepository<Organization> _organizationRepository = organizationRepository;
 
   public async Task<bool> CheckAccess(int nodeId, int parentId)
   {

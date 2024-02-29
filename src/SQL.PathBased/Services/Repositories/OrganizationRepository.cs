@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using SQL.PathBased.Database;
 using SQL.PathBased.Models;
 
 namespace SQL.PathBased.Services.Repositories;
 
-public class OrganizationRepository(ApplicationDbContext appDbContext) : IOrganizationRepository
+public class OrganizationRepository(ApplicationDbContext appDbContext) : IOrganizationRepository<Organization>
 {
   private readonly ApplicationDbContext _context = appDbContext;
 

@@ -4,11 +4,13 @@ using SQL.ClosureTable.Services.OrganizationsComposite;
 using SQL.ClosureTable.Services.Repositories;
 using Common.Extensions;
 using SQL.ClosureTable.Data;
+using SQL.ClosureTable.Models;
+using Common.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDatabase(builder.Configuration);
-builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<IOrganizationRepository<Organization>, OrganizationRepository>();
 builder.Services.AddScoped<IOrganizationClosureRepsotory, OrganizationClosureRepsotory>();
 builder.Services.AddScoped<OrganizationHelperService>();
 builder.Services.AddTransient<CompositeOrganization>();

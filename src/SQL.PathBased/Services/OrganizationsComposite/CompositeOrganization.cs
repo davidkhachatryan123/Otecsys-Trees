@@ -1,11 +1,11 @@
-﻿using SQL.PathBased.Models;
-using SQL.PathBased.Services.Repositories;
+﻿using Common.Interfaces;
+using SQL.PathBased.Models;
 
 namespace SQL.PathBased.Services.OrganizationsComposite;
 
-public class CompositeOrganization(IOrganizationRepository organizationRepository) : OrganizationExtension
+public class CompositeOrganization(IOrganizationRepository<Organization> organizationRepository) : OrganizationExtension
 {
-  private readonly IOrganizationRepository _organizationRepository = organizationRepository;
+  private readonly IOrganizationRepository<Organization> _organizationRepository = organizationRepository;
 
   private readonly List<Organization> _organizations = [];
 
