@@ -1,14 +1,11 @@
 ﻿using Common.Interfaces;
-using SQL.ClosureTable.Services.Repositories;
+using Microsoft.EntityFrameworkCore;
+using SQL.ClosureTable.Database;
 
 namespace SQL.ClosureTable.Services;
 
-public class OrganizationHelperService
-  (IOrganizationClosureRepsotory organizationClosureRepsotory)
-    : IOrganizationOperations<int>
+public class OrganizationHelperService(ApplicationDbContext context) : IOrganizationOperations<int>
 {
-  private readonly IOrganizationClosureRepsotory _organizationClosureRepsotory = organizationClosureRepsotory;
-
   public async Task<bool> CheckAccess(int nodeId, int parentId)
-  => await _organizationClosureRepsotory.GetAsync(nodeId, parentId) is not null;
+  => await context.OrganizationClosures.AnyAsync(o => o.NodeId == nodeId && o.ParentId == parentId);
 }
