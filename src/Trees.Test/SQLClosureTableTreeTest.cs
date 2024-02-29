@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using Trees.Test.Data;
 
 namespace Trees.Test;
 
@@ -9,7 +8,7 @@ public class SQLClosureTableTreeTest(WebApplicationFactory<SQL.ClosureTable.Prog
     private readonly WebApplicationFactory<SQL.ClosureTable.Program> _factory = factory;
 
     [Theory]
-    [ClassData(typeof(TestDataSQLClosureTable))]
+    [ClassData(typeof(Data))]
     public async void CheckAccess(int parent_ID, int[] children_IDs)
     {
         // Arrange
