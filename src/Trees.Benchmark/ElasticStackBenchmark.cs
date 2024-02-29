@@ -47,4 +47,30 @@ public class ElasticStackTableBenchmark
     var call = await _client.GetAsync<Organization>(nodeId);
     return call.Source.Path.Contains(parentId);
   }
+
+  [Benchmark]
+  [ArgumentsSource(nameof(Data))]
+  public async Task<bool> HasAccessSearchQuery(string nodeId, string parentId)
+  {
+    var call = await _client.SearchAsync<Organization>(s => s
+      .Size(0)
+      .Query(q => q
+        .Bool(b => b
+          .Must(m => m
+            .Match(m => m
+              .Field(f => f.Id)
+              .Query(nodeId)
+            )
+          )
+          .Filter(f => f
+            .QueryString(qs => qs
+              .Query("*" + parentId.ToString() + "*")
+            )
+          )
+        )
+      )
+    );
+
+    return call.Total == 1;
+  }
 }
