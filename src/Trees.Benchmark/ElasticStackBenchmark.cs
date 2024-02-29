@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Elasticsearch.Net;
-using ElasticStack;
+using ElasticStack.Models;
 using Microsoft.Extensions.Configuration;
 using Nest;
 

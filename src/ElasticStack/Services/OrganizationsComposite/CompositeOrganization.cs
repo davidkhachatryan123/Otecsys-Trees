@@ -1,4 +1,4 @@
-﻿
+﻿using ElasticStack.Models;
 using ElasticStack.Services.Repositories;
 
 namespace ElasticStack.Services.OrganizationsComposite;

@@ -1,5 +1,6 @@
 ﻿using Nest;
 using ElasticStack.Services.OrganizationsComposite;
+using ElasticStack.Models;
 
 namespace ElasticStack.Data;
 

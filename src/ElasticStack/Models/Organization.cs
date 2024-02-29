@@ -1,6 +1,6 @@
 ﻿using Nest;
 
-namespace ElasticStack;
+namespace ElasticStack.Models;
 
 [ElasticsearchType(RelationName = "organization")]
 public class Organization

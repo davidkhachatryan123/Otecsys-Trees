@@ -1,4 +1,6 @@
-﻿namespace ElasticStack.Services.OrganizationsComposite;
+﻿using ElasticStack.Models;
+
+namespace ElasticStack.Services.OrganizationsComposite;
 
 public abstract class OrganizationExtension : Organization
 {

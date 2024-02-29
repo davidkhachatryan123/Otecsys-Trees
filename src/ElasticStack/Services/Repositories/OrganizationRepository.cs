@@ -1,4 +1,5 @@
-﻿using Nest;
+﻿using ElasticStack.Models;
+using Nest;
 
 namespace ElasticStack.Services.Repositories;
 
