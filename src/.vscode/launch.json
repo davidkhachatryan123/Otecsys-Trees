@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "C#: Tree Generator Debug",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/Trees.Generator/Trees.Generator.csproj"
+    },
+    {
       "name": ".NET Core Launch (SQL.PathBased)",
       "type": "coreclr",
       "request": "launch",

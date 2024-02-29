@@ -1,0 +1,14 @@
+{
+  "ConnectionStrings": {
+    "PathBasedOrganizationDb": "Server=localhost;Database=Trees.PathBased.OrganizationDb;User=sa;Password=Q7YUZWH84Lg&;TrustServerCertificate=True;",
+    "ClosureTableOrganizationDb": "Server=localhost;Database=Trees.ClosureTable.OrganizationDb;User=sa;Password=Q7YUZWH84Lg&;TrustServerCertificate=True;",
+    "ElasticSearchUrl": "http://localhost:9200"
+  },
+  "TreeSettings": {
+    "Children": {
+      "Min": 1,
+      "Max": 1
+    },
+    "MaxDepth": 100
+  }
+}
