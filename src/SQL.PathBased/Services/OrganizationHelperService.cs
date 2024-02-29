@@ -1,6 +1,5 @@
 ﻿using Common.Interfaces;
 using SQL.PathBased.Models;
-using SQL.PathBased.Services.Repositories;
 
 namespace SQL.PathBased.Services;
 
