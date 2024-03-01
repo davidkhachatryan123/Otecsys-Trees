@@ -78,6 +78,8 @@ POST organizations_tree/_doc/5
 }
 
 
+GET organizations_tree/_doc/1905
+
 GET organizations_tree/_search
 {
   "query": {
@@ -87,16 +89,19 @@ GET organizations_tree/_search
 
 GET organizations_tree/_search
 {
+  "size": 0,
   "query": {
     "bool" : {
       "must" : {
-        "match" : { "organization_path" : "5" }
+        "match" : { "id" : "100" }
       },
-      "filter": {
-        "regexp": {
-          "organization_path.tree": ".*2.*"
+      "filter": [
+        {
+          "query_string": {
+            "query": "*99*"
+          }
         }
-      }
+      ]
     }
   }
 }
