@@ -19,6 +19,8 @@ public class SQLClosureTableBenchmark
     yield return new object[] { 100, 50 };
     yield return new object[] { 2, 1 };
     yield return new object[] { 50, 51 };
+    // yield return new object[] { 1873, 1 };
+    // yield return new object[] { 2, 1 };
   }
 
   private ApplicationDbContext _context = null!;
@@ -40,8 +42,8 @@ public class SQLClosureTableBenchmark
 
   [Benchmark]
   [ArgumentsSource(nameof(Data))]
-  public async Task<bool> HasAccess(int nodeId, int parentId)
-  => await _context.OrganizationClosures
-                   .AsNoTracking()
-                   .AnyAsync(o => o.NodeId == nodeId && o.ParentId == parentId);
+  public bool HasAccess(int nodeId, int parentId)
+  => _context.OrganizationClosures
+             .AsNoTracking()
+             .Any(o => o.NodeId == nodeId && o.ParentId == parentId);
 }

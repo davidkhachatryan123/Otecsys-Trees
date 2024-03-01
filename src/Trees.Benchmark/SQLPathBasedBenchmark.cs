@@ -19,6 +19,8 @@ public class SQLPathBasedBenchmark
     yield return new object[] { 100, 50 };
     yield return new object[] { 2, 1 };
     yield return new object[] { 50, 51 };
+    // yield return new object[] { 1873, 1 };
+    // yield return new object[] { 2, 1 };
   }
 
   private ApplicationDbContext _context = null!;
@@ -40,25 +42,12 @@ public class SQLPathBasedBenchmark
 
   [Benchmark]
   [ArgumentsSource(nameof(Data))]
-  public async Task<bool> HasAccess(int nodeId, int parentId)
+  public bool HasAccess(int nodeId, int parentId)
   {
-    var org = await _context.Organizations
-                            .AsNoTracking()
-                            .FirstOrDefaultAsync(o => o.Id == nodeId);
+    var org = _context.Organizations
+                      .AsNoTracking()
+                      .FirstOrDefault(o => o.Id == nodeId);
 
     return org is not null && org.Path.Contains(parentId.ToString());
-  }
-
-  [Benchmark]
-  [ArgumentsSource(nameof(Data))]
-  public async Task<bool> HasAccessOnlySQL(int nodeId, int parentId)
-  {
-    string? path = await _context.Organizations
-                            .AsNoTracking()
-                            .Where(o => o.Id == nodeId)
-                            .Select(o => o.Path)
-                            .FirstOrDefaultAsync();
-
-    return path is not null && path.Contains(parentId.ToString());
   }
 }

@@ -20,6 +20,8 @@ public class ElasticStackTableBenchmark
     yield return new object[] { "100", "50" };
     yield return new object[] { "2", "1" };
     yield return new object[] { "50", "51" };
+    // yield return new object[] { "1873", "1" };
+    // yield return new object[] { "2", "1" };
   }
 
   private ElasticClient _client = null!;
@@ -45,35 +47,9 @@ public class ElasticStackTableBenchmark
 
   [Benchmark]
   [ArgumentsSource(nameof(Data))]
-  public async Task<bool> HasAccess(string nodeId, string parentId)
+  public bool HasAccess(string nodeId, string parentId)
   {
-    var call = await _client.GetAsync<Organization>(nodeId);
+    var call = _client.Get<Organization>(nodeId);
     return call.Source.Path.Contains(parentId);
-  }
-
-  [Benchmark]
-  [ArgumentsSource(nameof(Data))]
-  public async Task<bool> HasAccessSearchQuery(string nodeId, string parentId)
-  {
-    var call = await _client.SearchAsync<Organization>(s => s
-      .Size(0)
-      .Query(q => q
-        .Bool(b => b
-          .Must(m => m
-            .Match(m => m
-              .Field(f => f.Id)
-              .Query(nodeId)
-            )
-          )
-          .Filter(f => f
-            .QueryString(qs => qs
-              .Query("*" + parentId.ToString() + "*")
-            )
-          )
-        )
-      )
-    );
-
-    return call.Total == 1;
-  }
+  } 
 }
