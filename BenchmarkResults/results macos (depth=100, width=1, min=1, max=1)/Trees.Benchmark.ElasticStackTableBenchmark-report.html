@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Trees.Benchmark.ElasticStackTableBenchmark-20240301-001521</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, macOS Sonoma 14.2.1 (23C71) [Darwin 23.2.0]
+Apple M1, 1 CPU, 8 logical and 8 physical cores
+.NET SDK 8.0.201
+  [Host]     : .NET 8.0.2 (8.0.224.6711), Arm64 RyuJIT AdvSIMD
+  DefaultJob : .NET 8.0.2 (8.0.224.6711), Arm64 RyuJIT AdvSIMD
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method        </th><th>nodeId</th><th>parentId</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>HasAccess</td><td>100</td><td>1</td><td>401.1 &mu;s</td><td>15.38 &mu;s</td><td>44.87 &mu;s</td><td>0.9766</td><td>11.02 KB</td>
+</tr><tr><td>HasAccessSearchQuery</td><td>100</td><td>1</td><td>1,195.4 &mu;s</td><td>81.25 &mu;s</td><td>239.57 &mu;s</td><td>1.9531</td><td>18.09 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>50</td><td>404.0 &mu;s</td><td>13.98 &mu;s</td><td>41.01 &mu;s</td><td>0.9766</td><td>11.02 KB</td>
+</tr><tr><td>HasAccessSearchQuery</td><td>100</td><td>50</td><td>1,538.9 &mu;s</td><td>77.71 &mu;s</td><td>225.45 &mu;s</td><td>-</td><td>18.22 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>99</td><td>414.3 &mu;s</td><td>11.94 &mu;s</td><td>34.64 &mu;s</td><td>1.4648</td><td>11.02 KB</td>
+</tr><tr><td>HasAccessSearchQuery</td><td>100</td><td>99</td><td>1,427.6 &mu;s</td><td>75.06 &mu;s</td><td>218.95 &mu;s</td><td>-</td><td>18.22 KB</td>
+</tr><tr><td>HasAccess</td><td>2</td><td>1</td><td>416.6 &mu;s</td><td>12.92 &mu;s</td><td>37.89 &mu;s</td><td>1.4648</td><td>9.77 KB</td>
+</tr><tr><td>HasAccessSearchQuery</td><td>2</td><td>1</td><td>1,151.6 &mu;s</td><td>57.38 &mu;s</td><td>168.30 &mu;s</td><td>1.9531</td><td>18.09 KB</td>
+</tr><tr><td>HasAccess</td><td>50</td><td>51</td><td>443.5 &mu;s</td><td>12.87 &mu;s</td><td>37.54 &mu;s</td><td>0.9766</td><td>10.41 KB</td>
+</tr><tr><td>HasAccessSearchQuery</td><td>50</td><td>51</td><td>1,506.7 &mu;s</td><td>106.79 &mu;s</td><td>306.39 &mu;s</td><td>-</td><td>18.23 KB</td>
+</tr></tbody></table>
+</body>
+</html>

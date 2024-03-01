@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Trees.Benchmark.SQLPathBasedBenchmark-20240301-084855</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3085/23H2/2023Update/SunValley3)
+Intel Core i5-4670 CPU 3.40GHz (Haswell), 1 CPU, 4 logical and 4 physical cores
+.NET SDK 8.0.201
+  [Host]     : .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method    </th><th>nodeId</th><th>parentId</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>HasAccess</td><td>2</td><td>1</td><td>1.065 ms</td><td>0.0194 ms</td><td>0.0466 ms</td><td>1.045 ms</td><td>1.9531</td><td>11.89 KB</td>
+</tr><tr><td>HasAccessOnlySQL</td><td>2</td><td>1</td><td>1.039 ms</td><td>0.0174 ms</td><td>0.0171 ms</td><td>1.036 ms</td><td>3.9063</td><td>12.62 KB</td>
+</tr><tr><td>HasAccess</td><td>50</td><td>51</td><td>1.345 ms</td><td>0.0797 ms</td><td>0.2337 ms</td><td>1.303 ms</td><td>3.9063</td><td>12.15 KB</td>
+</tr><tr><td>HasAccessOnlySQL</td><td>50</td><td>51</td><td>1.610 ms</td><td>0.1039 ms</td><td>0.3030 ms</td><td>1.597 ms</td><td>3.9063</td><td>12.88 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>1</td><td>1.733 ms</td><td>0.1674 ms</td><td>0.4909 ms</td><td>1.685 ms</td><td>3.9063</td><td>12.44 KB</td>
+</tr><tr><td>HasAccessOnlySQL</td><td>100</td><td>1</td><td>1.338 ms</td><td>0.0262 ms</td><td>0.0565 ms</td><td>1.319 ms</td><td>3.9063</td><td>13.47 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>50</td><td>1.272 ms</td><td>0.0334 ms</td><td>0.0941 ms</td><td>1.267 ms</td><td>3.9063</td><td>12.44 KB</td>
+</tr><tr><td>HasAccessOnlySQL</td><td>100</td><td>50</td><td>1.055 ms</td><td>0.0199 ms</td><td>0.0204 ms</td><td>1.051 ms</td><td>3.9063</td><td>13.18 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>99</td><td>1.054 ms</td><td>0.0210 ms</td><td>0.0225 ms</td><td>1.047 ms</td><td>3.9063</td><td>12.44 KB</td>
+</tr><tr><td>HasAccessOnlySQL</td><td>100</td><td>99</td><td>1.057 ms</td><td>0.0194 ms</td><td>0.0172 ms</td><td>1.054 ms</td><td>3.9063</td><td>13.46 KB</td>
+</tr></tbody></table>
+</body>
+</html>

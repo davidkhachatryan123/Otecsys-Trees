@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Trees.Benchmark.SQLClosureTableBenchmark-20240301-002541</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, macOS Sonoma 14.2.1 (23C71) [Darwin 23.2.0]
+Apple M1, 1 CPU, 8 logical and 8 physical cores
+.NET SDK 8.0.201
+  [Host]     : .NET 8.0.2 (8.0.224.6711), Arm64 RyuJIT AdvSIMD
+  DefaultJob : .NET 8.0.2 (8.0.224.6711), Arm64 RyuJIT AdvSIMD
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>nodeId</th><th>parentId</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>HasAccess</td><td>2</td><td>1</td><td>670.8 &mu;s</td><td>17.21 &mu;s</td><td>49.37 &mu;s</td><td>1.9531</td><td>12.97 KB</td>
+</tr><tr><td>HasAccess</td><td>50</td><td>51</td><td>692.2 &mu;s</td><td>12.18 &mu;s</td><td>17.85 &mu;s</td><td>1.9531</td><td>12.86 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>1</td><td>689.2 &mu;s</td><td>13.74 &mu;s</td><td>26.48 &mu;s</td><td>1.9531</td><td>12.91 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>50</td><td>695.2 &mu;s</td><td>18.62 &mu;s</td><td>52.51 &mu;s</td><td>1.9531</td><td>13.12 KB</td>
+</tr><tr><td>HasAccess</td><td>100</td><td>99</td><td>697.3 &mu;s</td><td>13.84 &mu;s</td><td>38.59 &mu;s</td><td>1.9531</td><td>12.96 KB</td>
+</tr></tbody></table>
+</body>
+</html>
