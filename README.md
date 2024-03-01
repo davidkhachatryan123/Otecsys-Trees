@@ -75,7 +75,7 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 * **CPU**: Apple M1
 * **Cores**: 8 logical and 8 physical cores
 
-### Path based based on MSSQL
+### Path based on MSSQL
 
 | Method | nodeId | parentId | Mean | Error | StdDev| Median | Gen0 | Allocated |
 |----------------- |------- |--------- |---------:|---------:|---------:|---------:|-------:|----------:|
