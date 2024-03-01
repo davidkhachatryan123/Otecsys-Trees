@@ -77,8 +77,8 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 
 ### Path based on MSSQL
 
-| Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Allocated |
-|----------------- |------- |--------- |---------:|---------:|---------:|-------:|----------:|
+| Method | nodeId | parentId | Mean | Error | StdDev | Median | Gen0 | Allocated |
+|---------- |------- |--------- |---------:|---------:|---------:|---------:|-------:|----------:|
 | **HasAccess** | **1873**   | **1**        | **584.5 μs** | **11.65 μs** | **33.24 μs** | **574.2 μs** | **0.9766** |   **9.63 KB** |
 | **HasAccess** | **2**      | **1**        | **596.4 μs** | **17.67 μs** | **48.36 μs** | **580.6 μs** | **0.9766** |    **8.8 KB** |
 
@@ -91,8 +91,8 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 
 ### Elasticsearch based on "Path hierarchy tokenizer"
 
-| Method | nodeId | parentId | Mean | Error | StdDev | Median | Gen0 | Allocated |
-|--------------------- |------- |--------- |-----------:|----------:|----------:|-----------:|-------:|----------:|
+| Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Allocated |
+|----------------- |------- |--------- |---------:|---------:|---------:|-------:|----------:|
 | **HasAccess** | **1873**   | **1**        | **374.4 μs** | **16.80 μs** | **49.01 μs** | **0.9766** |  **10.77 KB** |
 | **HasAccess** | **2**      | **1**        | **416.2 μs** | **20.18 μs** | **57.59 μs** | **0.9766** |   **8.84 KB** |
 
