@@ -33,7 +33,7 @@ public static class Generator
 
     for (int depth = 0; depth < maxDepth; depth++)
     {
-      Console.WriteLine($"Generating nodes for depth: {depth}");
+      Console.WriteLine($"Generating nodes for depth: {depth + 1}");
 
       int start = rnd.Next(1, maxWidth);
       int end = rnd.Next(start, maxWidth);
