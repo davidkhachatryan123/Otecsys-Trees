@@ -10,9 +10,10 @@ public static class Generator
     SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_composite)
   {
     var treeSettingsSection = configuration.GetSection("TreeSettings");
-    int maxDepth = treeSettingsSection.GetValue<int>("MaxDepth");
     int maxChildren = treeSettingsSection.GetValue<int>("Children:Max");
     int minChildren = treeSettingsSection.GetValue<int>("Children:Min");
+    int maxDepth = treeSettingsSection.GetValue<int>("MaxDepth");
+    int maxWidth = treeSettingsSection.GetValue<int>("MaxWidth");
 
     int es_id = 1;
 
@@ -32,13 +33,24 @@ public static class Generator
 
     for (int depth = 0; depth < maxDepth; depth++)
     {
-      es_previous_depth_nodes = [.. es_current_depth_nodes];
+      int start = rnd.Next(1, maxWidth);
+      int end = rnd.Next(start, maxWidth);
+
+      if (sql_path_previous_depth_nodes.Count > maxWidth)
+      {
+        es_previous_depth_nodes = es_current_depth_nodes.GetRange(start, end);
+        sql_qt_previous_depth_nodes = sql_qt_current_depth_nodes.GetRange(start, end);
+        sql_path_previous_depth_nodes = sql_path_current_depth_nodes.GetRange(start, end);
+      }
+      else
+      {
+        es_previous_depth_nodes = [.. es_current_depth_nodes];
+        sql_qt_previous_depth_nodes = [.. sql_qt_current_depth_nodes];
+        sql_path_previous_depth_nodes = [.. sql_path_current_depth_nodes];
+      }
+
       es_current_depth_nodes = [];
-
-      sql_qt_previous_depth_nodes = [.. sql_qt_current_depth_nodes];
       sql_qt_current_depth_nodes = [];
-
-      sql_path_previous_depth_nodes = [.. sql_path_current_depth_nodes];
       sql_path_current_depth_nodes = [];
 
       for (int previous_depth_node_i = 0; previous_depth_node_i < sql_path_previous_depth_nodes.Count; previous_depth_node_i++)

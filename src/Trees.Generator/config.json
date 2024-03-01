@@ -7,8 +7,9 @@
   "TreeSettings": {
     "Children": {
       "Min": 1,
-      "Max": 1
+      "Max": 3
     },
+    "MaxWidth": 10,
     "MaxDepth": 100
   }
 }
