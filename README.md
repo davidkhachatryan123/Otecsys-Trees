@@ -19,7 +19,7 @@ git clone https://github.com/davidkhachatryan123/Otecsys-Trees.git
 cd Otecsys-Trees/src
 ```
 
-Make sure you have installed [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) in your environmente. After that, you can run the commands bellow and get started with the `David Studio` immediately.
+Make sure you have installed [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) in your environment. After that, you can run the commands bellow and get started exploring application immediately.
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.override.yml up -d
@@ -75,7 +75,7 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 * **CPU**: Apple M1
 * **Cores**: 8 logical and 8 physical cores
 
-### Path based logic results
+### Path based based on MSSQL
 
 | Method | nodeId | parentId | Mean | Error | StdDev| Median | Gen0 | Allocated |
 |----------------- |------- |--------- |---------:|---------:|---------:|---------:|-------:|----------:|
@@ -83,7 +83,7 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 | **HasAccess**        | **100**    | **99**       | **774.1 μs** | **18.25 μs** | **52.66 μs** | **763.2 μs** | **1.9531** |  **13.95 KB** |
 | **HasAccess**        | **2**      | **1**        | **707.2 μs** | **17.05 μs** | **47.82 μs** | **695.7 μs** | **1.9531** |  **13.32 KB** |
 
-### Closure Table based logic results
+### Closure Table based on MSSQL
 
 | Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Allocated |
 |-------------------- |------- |--------- |-----------:|----------:|----------:|-------:|----------:|
@@ -91,7 +91,7 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 | **HasAccess** | **100**    | **99**       | **697.3 μs** | **13.84 μs** | **38.59 μs** | **1.9531** |  **12.96 KB** |
 | **HasAccess** | **2**      | **1**        | **670.8 μs** | **17.21 μs** | **49.37 μs** | **1.9531** |  **12.97 KB** |
 
-### Elasticsearch results
+### Elasticsearch based on "Path hierarchy tokenizer"
 
 | Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Allocated |
 |-------------------- |------- |--------- |-----------:|----------:|----------:|-------:|----------:|
