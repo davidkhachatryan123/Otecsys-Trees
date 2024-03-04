@@ -19,8 +19,17 @@ services:
       context: .
       dockerfile: ElasticStack/Dockerfile
 
+  tree-mongo:
+    image: tree.mongo:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: MongoDB/Dockerfile
+
   db:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
+
+  mongo:
+    image: mongo
 
   elastic-search:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}

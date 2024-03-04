@@ -63,10 +63,10 @@ public class SeedData
         if (elasticClient.Count<Organization>().Count > 0) return;
 
         var root = scope.ServiceProvider.GetRequiredService<CompositeOrganization>();
-        var org1 = await root.AddAsync(new Organization("Office 1"));
-        var org2 = await org1.AddAsync(new Organization("Office 2"));
-        var org3 = await org2.AddAsync(new Organization("Office 3"));
-        var org4 = await org1.AddAsync(new Organization("Office 4"));
-        var org5 = await org2.AddAsync(new Organization("Office 5"));
+        var org1 = await root.AddAsync(new Organization("Office 1") { Id = "1" }, enableGuid: false);
+        var org2 = await org1.AddAsync(new Organization("Office 2") { Id = "2" }, enableGuid: false);
+        var org3 = await org2.AddAsync(new Organization("Office 3") { Id = "3" }, enableGuid: false);
+        var org4 = await org1.AddAsync(new Organization("Office 4") { Id = "4" }, enableGuid: false);
+        var org5 = await org2.AddAsync(new Organization("Office 5") { Id = "5" }, enableGuid: false);
     }
 }

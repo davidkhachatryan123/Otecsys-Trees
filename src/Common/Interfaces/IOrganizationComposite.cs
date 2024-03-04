@@ -1,3 +1,3 @@
 namespace Common.Interfaces;
 
-public interface IOrganizationComposite { }
+public interface IOrganizationComposite;
