@@ -10,7 +10,7 @@ public class CompositeOrganization
     IOrganizationRepository<Organization> organizationRepository,
     IOrganizationClosureRepsotory organizationClosureRepsotory,
     ApplicationDbContext context
-  ) : OrganizationExtension
+  ) : OrganizationExtension, IOrganizationComposite
 {
   private readonly IOrganizationRepository<Organization> _organizationRepository = organizationRepository;
   private readonly IOrganizationClosureRepsotory _organizationClosureRepsotory = organizationClosureRepsotory;

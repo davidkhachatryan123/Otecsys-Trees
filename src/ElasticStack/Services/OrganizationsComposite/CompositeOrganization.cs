@@ -1,9 +1,10 @@
-﻿using ElasticStack.Models;
+﻿using Common.Interfaces;
+using ElasticStack.Models;
 using ElasticStack.Services.Repositories;
 
 namespace ElasticStack.Services.OrganizationsComposite;
 
-public class CompositeOrganization(IOrganizationRepository organizationRepository) : OrganizationExtension
+public class CompositeOrganization(IOrganizationRepository organizationRepository) : OrganizationExtension, IOrganizationComposite
 {
   private readonly IOrganizationRepository _organizationRepository = organizationRepository;
 

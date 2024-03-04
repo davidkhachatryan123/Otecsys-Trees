@@ -3,7 +3,8 @@ using SQL.PathBased.Models;
 
 namespace SQL.PathBased.Services.OrganizationsComposite;
 
-public class CompositeOrganization(IOrganizationRepository<Organization> organizationRepository) : OrganizationExtension
+public class CompositeOrganization(IOrganizationRepository<Organization> organizationRepository)
+  : OrganizationExtension, IOrganizationComposite
 {
   private readonly IOrganizationRepository<Organization> _organizationRepository = organizationRepository;
 
