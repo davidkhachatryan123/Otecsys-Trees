@@ -11,9 +11,8 @@ public class Data : IEnumerable<object[]>
     //                          |   |
     //                          |    _ _ _ _
     //                          |           |
-    yield return new object[] { 1, new[] { 100, 2 } };
-    yield return new object[] { 99, new[] { 100 } };
-    yield return new object[] { 50, new[] { 100 } };
+    yield return new object[] { 1, new[] { 2, 3, 4, 5 } };
+    yield return new object[] { 2, new[] { 3, 5 } };
   }
 
   IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
