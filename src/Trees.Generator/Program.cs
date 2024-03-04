@@ -3,12 +3,12 @@ using Elasticsearch.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Nest;
-using Trees.Generator;
+using Trees.Generator.Strategies;
 
 // Read and build configuration
 var builder = new ConfigurationBuilder()
-      .SetBasePath(Directory.GetCurrentDirectory())
-      .AddJsonFile("config.json", optional: false);
+  .SetBasePath(Directory.GetCurrentDirectory())
+  .AddJsonFile("config.json", optional: false);
 var config = builder.Build();
 
 // Create client for ElasticSearch
@@ -31,15 +31,21 @@ var pathBased_context = new SQL.PathBased.Database.ApplicationDbContext(pathBase
 
 // Create composite for ElasticSearch
 ElasticStack.Services.Repositories.IOrganizationRepository es_orgRepo = new ElasticStack.Services.Repositories.OrganizationRepository(es_client);
-ElasticStack.Services.OrganizationsComposite.CompositeOrganization es_root = new(es_orgRepo);
+ElasticStack.Services.OrganizationsComposite.CompositeOrganization es_composite = new(es_orgRepo);
 
 // Create composite for Closure Table Based
 IOrganizationRepository<SQL.ClosureTable.Models.Organization> sql_qt_orgRepo = new SQL.ClosureTable.Services.Repositories.OrganizationRepository(closureTable_context);
 SQL.ClosureTable.Services.Repositories.IOrganizationClosureRepsotory sql_qt_orgClosureRepo = new SQL.ClosureTable.Services.Repositories.OrganizationClosureRepsotory(closureTable_context);
-SQL.ClosureTable.Services.OrganizationsComposite.CompositeOrganization sql_qt_root = new(sql_qt_orgRepo, sql_qt_orgClosureRepo, closureTable_context);
+SQL.ClosureTable.Services.OrganizationsComposite.CompositeOrganization sql_qt_composite = new(sql_qt_orgRepo, sql_qt_orgClosureRepo, closureTable_context);
 
 // Create composite for Path Based
 IOrganizationRepository<SQL.PathBased.Models.Organization> sql_path_orgRepo = new SQL.PathBased.Services.Repositories.OrganizationRepository(pathBased_context);
-SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_root = new(sql_path_orgRepo);
+SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_composite = new(sql_path_orgRepo);
 
-await Generator.GenerateRandomDataAsync(config, es_root, sql_qt_root, sql_path_root);
+TreeGenerator generator = new([
+  new ElasticsearchStrategy(es_composite),
+  new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
+  new PathBAsedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
+], config);
+
+await generator.GenerateTreesAsync();
