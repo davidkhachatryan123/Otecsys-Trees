@@ -6,6 +6,8 @@ public class TreeGenerator(List<TreeStrategy> strategies, IConfiguration configu
 {
   public async Task GenerateTreesAsync()
   {
+    if (strategies.Count == 0) return;
+
     var treeSettingsSection = configuration.GetSection("TreeSettings");
     int maxChildren = treeSettingsSection.GetValue<int>("Children:Max");
     int minChildren = treeSettingsSection.GetValue<int>("Children:Min");
