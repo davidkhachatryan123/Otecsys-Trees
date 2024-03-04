@@ -69,6 +69,26 @@
         ],
         "debuggerPath": "/remote_debugger/vsdbg"
       }
+    },
+    {
+      "name": ".NET Core Launch (MongoDB)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "cwd": "/app/MongoDB/bin/Debug/net8.0",
+      "program": "MongoDB.dll",
+      "pipeTransport": {
+        "pipeCwd": "${workspaceRoot}",
+        "pipeProgram": "docker",
+        "pipeArgs": [
+          "exec",
+          "-i",
+          "tree-mongo",
+          "/bin/sh",
+          "-c"
+        ],
+        "debuggerPath": "/remote_debugger/vsdbg"
+      }
     }
   ],
   "compounds": [
@@ -78,6 +98,7 @@
         ".NET Core Launch (SQL.PathBased)",
         ".NET Core Launch (SQL.ClosureTable)",
         ".NET Core Launch (ElasticStack)",
+        ".NET Core Launch (MongoDB)"
       ],
       "preLaunchTask": "docker-compose: up",
       "stopAll": true

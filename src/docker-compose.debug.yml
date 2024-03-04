@@ -27,3 +27,12 @@ services:
     volumes:
       - ./:/app
       - ~/.vsdbg:/remote_debugger:rw
+
+  tree-mongo:
+    container_name: tree-mongo
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    entrypoint: tail -f /dev/null
+    volumes:
+      - ./:/app
+      - ~/.vsdbg:/remote_debugger:rw

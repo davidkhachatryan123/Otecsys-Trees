@@ -25,6 +25,14 @@ services:
     ports:
       - "5030:5000"
 
+  tree-mongo:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__OrganizationDb=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/
+    ports:
+      - "5040:5000"
+
   db:
     env_file:
       - .env
@@ -44,6 +52,10 @@ services:
     restart: always
     env_file:
       - .env
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
     mem_limit: 2048M
     ulimits:
       memlock:
@@ -86,5 +98,6 @@ services:
 
 volumes:
   sqldata:
+  mongodata:
   esdata01:
   kibanadata:
