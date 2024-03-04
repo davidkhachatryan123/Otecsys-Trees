@@ -46,7 +46,6 @@ public class CompositeOrganization
   public override Task<CompositeOrganization> RemoveAsync(Organization org)
     => throw new NotImplementedException();
 
-
   public override async Task<CompositeOrganization> PickAsync()
   {
     var picked = await _organizationRepository.GetAsync(1);
