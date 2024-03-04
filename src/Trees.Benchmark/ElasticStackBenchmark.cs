@@ -8,7 +8,7 @@ namespace Trees.Benchmark;
 
 [MemoryDiagnoser]
 [KeepBenchmarkFiles]
-public class ElasticStackTableBenchmark
+public class ElasticStackBenchmark
 {
   public static IEnumerable<object[]> Data()
   {
@@ -51,5 +51,5 @@ public class ElasticStackTableBenchmark
   {
     var call = _client.Get<Organization>(nodeId);
     return call.Source.Path.Contains(parentId);
-  } 
+  }
 }
