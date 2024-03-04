@@ -12,7 +12,7 @@ public class TreeGenerator(List<TreeStrategy> strategies, IConfiguration configu
     int maxChildren = treeSettingsSection.GetValue<int>("Children:Max");
     int minChildren = treeSettingsSection.GetValue<int>("Children:Min");
     int maxDepth = treeSettingsSection.GetValue<int>("MaxDepth");
-    int maxWidth = treeSettingsSection.GetValue<int>("MaxWidth");
+    int width = treeSettingsSection.GetValue<int>("Width");
 
     Random rnd = new();
 
@@ -20,10 +20,10 @@ public class TreeGenerator(List<TreeStrategy> strategies, IConfiguration configu
     {
       Console.WriteLine($"Generating nodes for depth: {depth + 1}");
 
-      int start = rnd.Next(1, maxWidth);
-      int end = rnd.Next(start, maxWidth);
+      int start = rnd.Next(1, width);
+      int end = rnd.Next(start, width);
 
-      strategies.ForEach(strategy => strategy.DecreaseNodesWidth(maxWidth, start, end));
+      strategies.ForEach(strategy => strategy.DecreaseNodesWidth(width, start, end));
 
       for (int previous_depth_node_i = 0; previous_depth_node_i < strategies[0].PreviousNodesCount; previous_depth_node_i++)
       {

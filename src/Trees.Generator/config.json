@@ -10,7 +10,7 @@
       "Min": 1,
       "Max": 3
     },
-    "MaxWidth": 10,
+    "Width": 10,
     "MaxDepth": 100
   }
 }
