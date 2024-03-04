@@ -43,9 +43,9 @@ IOrganizationRepository<SQL.PathBased.Models.Organization> sql_path_orgRepo = ne
 SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_composite = new(sql_path_orgRepo);
 
 TreeGenerator generator = new([
-  new ElasticsearchStrategy(es_composite),
-  new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
-  new PathBAsedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
+  // new ElasticsearchStrategy(es_composite),
+  // new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
+  // new PathBAsedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
 ], config);
 
 await generator.GenerateTreesAsync();
