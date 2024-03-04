@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees.Test", "Trees.Test\Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees.Generator", "Trees.Generator\Trees.Generator.csproj", "{FBCDAFCA-8BFC-4963-B770-A7F650691F0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDB", "MongoDB\MongoDB.csproj", "{EFB52FFA-E99C-438A-8725-C6F8FB86579E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{FBCDAFCA-8BFC-4963-B770-A7F650691F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBCDAFCA-8BFC-4963-B770-A7F650691F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBCDAFCA-8BFC-4963-B770-A7F650691F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB52FFA-E99C-438A-8725-C6F8FB86579E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB52FFA-E99C-438A-8725-C6F8FB86579E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB52FFA-E99C-438A-8725-C6F8FB86579E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB52FFA-E99C-438A-8725-C6F8FB86579E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
