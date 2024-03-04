@@ -27,6 +27,7 @@
     <ProjectReference Include="..\SQL.PathBased\SQL.PathBased.csproj" />
     <ProjectReference Include="..\SQL.ClosureTable\SQL.ClosureTable.csproj" />
     <ProjectReference Include="..\ElasticStack\ElasticStack.csproj" />
+    <ProjectReference Include="..\MongoDB\MongoDB.csproj" />
   </ItemGroup>
 
 </Project>
