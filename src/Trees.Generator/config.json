@@ -2,7 +2,8 @@
   "ConnectionStrings": {
     "PathBasedOrganizationDb": "Server=localhost;Database=Trees.PathBased.OrganizationDb;User=sa;Password=Q7YUZWH84Lg&;TrustServerCertificate=True;",
     "ClosureTableOrganizationDb": "Server=localhost;Database=Trees.ClosureTable.OrganizationDb;User=sa;Password=Q7YUZWH84Lg&;TrustServerCertificate=True;",
-    "ElasticSearchUrl": "http://localhost:9200"
+    "ElasticSearchUrl": "http://localhost:9200",
+    "MongoOrganizationDb": "mongodb://root:root12@localhost:27017/"
   },
   "TreeSettings": {
     "Children": {

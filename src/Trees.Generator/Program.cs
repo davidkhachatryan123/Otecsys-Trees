@@ -2,6 +2,8 @@
 using Elasticsearch.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using Nest;
 using Trees.Generator.Strategies;
 
@@ -10,6 +12,13 @@ var builder = new ConfigurationBuilder()
   .SetBasePath(Directory.GetCurrentDirectory())
   .AddJsonFile("config.json", optional: false);
 var config = builder.Build();
+
+// Create client for MongoDB
+var mongo_client = new MongoClient(config.GetConnectionString("MongoOrganizationDb"));
+BsonClassMap.RegisterClassMap<MongoDB.Models.Organization>(classMap =>
+{
+  classMap.AutoMap();
+});
 
 // Create client for ElasticSearch
 var es_connectionPool = new SingleNodeConnectionPool(new Uri(config.GetConnectionString("ElasticSearchUrl")!));
@@ -29,6 +38,10 @@ var pathBased_optionsBuilder = new DbContextOptionsBuilder<SQL.PathBased.Databas
   .UseSqlServer(config.GetConnectionString("PathBasedOrganizationDb"));
 var pathBased_context = new SQL.PathBased.Database.ApplicationDbContext(pathBased_optionsBuilder.Options);
 
+// Create composite for MongoDB based
+MongoDB.Services.Repositories.IOrganizationRepository mongo_orgRepo = new MongoDB.Services.Repositories.OrganizationRepository(mongo_client);
+MongoDB.Services.OrganizationsComposite.CompositeOrganization mongo_composite = new(mongo_orgRepo);
+
 // Create composite for ElasticSearch
 ElasticStack.Services.Repositories.IOrganizationRepository es_orgRepo = new ElasticStack.Services.Repositories.OrganizationRepository(es_client);
 ElasticStack.Services.OrganizationsComposite.CompositeOrganization es_composite = new(es_orgRepo);
@@ -43,9 +56,10 @@ IOrganizationRepository<SQL.PathBased.Models.Organization> sql_path_orgRepo = ne
 SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_composite = new(sql_path_orgRepo);
 
 TreeGenerator generator = new([
-  // new ElasticsearchStrategy(es_composite),
-  // new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
-  // new PathBAsedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
+  new MongoDBStrategy(await mongo_composite.PickAsync()),
+  new ElasticsearchStrategy(es_composite),
+  new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
+  new PathBasedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
 ], config);
 
 await generator.GenerateTreesAsync();

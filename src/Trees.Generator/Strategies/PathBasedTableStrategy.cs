@@ -1,6 +1,6 @@
 namespace Trees.Generator.Strategies;
 
-public class PathBAsedTableStrategy
+public class PathBasedTableStrategy
   (SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization composite)
   : TreeStrategy(composite)
 {
