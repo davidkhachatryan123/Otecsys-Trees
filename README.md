@@ -76,13 +76,6 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 * **CPU**: Apple M1
 * **Cores**: 8 logical and 8 physical cores
 
-### Based on MongoDB (NoSQL)
-
-| Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Gen1 | Allocated |
-|---------- |--------------------- |--------------------- |---------:|----------:|---------:|-------:|-------:|----------:|
-| **HasAccess** | **65e60(...)99ea3 [24]** | **65e60(...)99e9f [24]** | **770.4 μs** | **101.24 μs** | **293.7 μs** | **7.8125** | **3.9063** |  **51.21 KB** |
-| **HasAccess** | **65e60(...)9ae9b [24]** | **65e60(...)99e9f [24]** | **843.3 μs** |  **96.39 μs** | **279.6 μs** | **7.8125** | **1.9531** |  **56.67 KB** |
-
 ### Path based on MSSQL
 
 | Method | nodeId | parentId | Mean | Error | StdDev | Median | Gen0 | Allocated |
@@ -104,20 +97,14 @@ The basic scenario can be run locally using docker-compose. Refer to these Wiki 
 | **HasAccess** | **1873**   | **1**        | **374.4 μs** | **16.80 μs** | **49.01 μs** | **0.9766** |  **10.77 KB** |
 | **HasAccess** | **2**      | **1**        | **416.2 μs** | **20.18 μs** | **57.59 μs** | **0.9766** |   **8.84 KB** |
 
-
-## Conclusion
-
 ### Based on MongoDB (NoSQL)
 
-MongoDB is a straightforward database written in C++, and it is expected to perform faster than other relational databases. However, we have observed the worst results with it. The memory allocation is also too much.
+| Method | nodeId | parentId | Mean | Error | StdDev | Gen0 | Allocated |
+|---------- |--------------------- |--------------------- |---------:|--------:|--------:|-------:|----------:|
+| **HasAccess** | **65e60(...)99ea3 [24]** | **65e60(...)99e9f [24]** | **267.7 μs** | **5.35 μs** | **8.01 μs** | **4.3945** |  **28.56 KB** |
+| **HasAccess** | **65e60(...)9ae9b [24]** | **65e60(...)99e9f [24]** | **275.3 μs** | **5.44 μs** | **4.54 μs** | **5.3711** |  **34.25 KB** |
 
-* **Pros**
-  + Easy to manage collections
-  + Eeasy to run queries to find all descendants or ancestors of a node
-  + Easy to add new nodes
-
-* **Cons**
-  + The cost of changing the tree structure
+## Conclusion
 
 ### Path based
 
@@ -153,3 +140,14 @@ Reviewing all the results, it appears to be the quickest method for retrieving d
 * **Cons**
   + Elasticsearch serves as a secondary database, necessitating the presence of a relational database to store primary data and synchronize relationships within the Elasticsearch index
 
+### Based on MongoDB (NoSQL)
+
+MongoDB is a straightforward database written in C++, and it is expected to perform faster than other relational databases. However, we have observed the best and fastest results with it. One drawback is that it allocates significantly more memory compared to other methods because it involves obtaining an array of ancestors and then determining if our parent is among them or not.
+
+* **Pros**
+  + Easy to manage collections
+  + Eeasy to run queries to find all descendants or ancestors of a node
+  + Easy to add new nodes
+
+* **Cons**
+  + The cost of changing the tree structure
