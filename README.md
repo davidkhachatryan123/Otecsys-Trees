@@ -1,6 +1,12 @@
 # Otecsys Trees
 
-This project's objective is to find the fastest way of getting ancestor of descendant from a tree structure. There're 3 solutions and the benchmarks for each one: Path based with MSSQL, Closure Table based with MSSQL and Elasticsearch based.
+This project's objective is to find the fastest way of getting one of ancestors of descendant from a tree structure.
+
+There're 4 solutions, tests and the benchmarks for each one:
+* Path based with MSSQL
+* Closure Table based with MSSQL
+* Elasticsearch based
+* MongoDB based
 
 ### Requirements
 
