@@ -47,11 +47,8 @@ public class MongoDBBenchmark
   [ArgumentsSource(nameof(Data))]
   public bool HasAccess(string nodeId, string parentId)
   {
-    var org = _organizations.AsQueryable()
-    .Where(o => o.Id == ObjectId.Parse(nodeId))
-    .Where(o => o.Ancestors.Any(a => a == ObjectId.Parse(parentId)))
-    .FirstOrDefault();
-
-    return org is not null;
+    return _organizations.Find(org => org.Id == ObjectId.Parse(nodeId))
+                         .FirstOrDefault()
+                         .Ancestors.Any(a => a == ObjectId.Parse(parentId));
   }
 }
