@@ -4,5 +4,11 @@
     "ClosureTableOrganizationDb": "Server=localhost;Database=Trees.ClosureTable.OrganizationDb;User=sa;Password=Q7YUZWH84Lg&;TrustServerCertificate=True;",
     "ElasticSearchUrl": "http://localhost:9200",
     "MongoOrganizationDb": "mongodb://root:root12@localhost:27017/"
+  },
+  "API_URLS": {
+    "PathBased": "http://localhost:5010/",
+    "ClosureTableBased": "http://localhost:5020/",
+    "ElasticsearchBased": "http://localhost:5030/",
+    "MongoDBBased": "http://localhost:5040/"
   }
 }
