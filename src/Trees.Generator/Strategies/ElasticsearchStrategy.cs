@@ -5,7 +5,7 @@ public class ElasticsearchStrategy
   (ElasticStack.Services.OrganizationsComposite.CompositeOrganization composite)
   : TreeStrategy(composite)
 {
-  private int _autoIncrementedId = 0;
+  private int _autoIncrementedId = 1;
   private int AutoIncrementedId
   {
     get

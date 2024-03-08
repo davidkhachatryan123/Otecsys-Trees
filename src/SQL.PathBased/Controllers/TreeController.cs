@@ -11,6 +11,6 @@ public class TreeController(OrganizationHelperService organizationHelper) : Cont
 
   [HttpGet]
   [Route("{nodeId}/" + nameof(CheckAccess))]
-  public async Task<IActionResult> CheckAccess([FromRoute] int nodeId, [FromQuery] int parnetId)
-    => Ok(await _organizationHelper.CheckAccess(nodeId, parnetId));
+  public async Task<IActionResult> CheckAccess([FromRoute] int nodeId, [FromQuery] int parentId)
+    => Ok(await _organizationHelper.CheckAccess(nodeId, parentId));
 }

@@ -17,7 +17,7 @@ public class SQLClosureTableTreeTest(WebApplicationFactory<SQL.ClosureTable.Prog
         foreach (int childID in children_IDs)
         {
             // Act
-            var response = await client.GetAsync($"/api/tree/{childID}/checkAccess?parnetId={parent_ID}");
+            var response = await client.GetAsync($"/api/tree/{childID}/checkAccess?parentId={parent_ID}");
 
             // Assert
             response.EnsureSuccessStatusCode();

@@ -56,10 +56,18 @@ IOrganizationRepository<SQL.PathBased.Models.Organization> sql_path_orgRepo = ne
 SQL.PathBased.Services.OrganizationsComposite.CompositeOrganization sql_path_composite = new(sql_path_orgRepo);
 
 TreeGenerator generator = new([
-  new MongoDBStrategy(await mongo_composite.PickAsync()),
-  new ElasticsearchStrategy(es_composite),
-  new ClosureTableStrategy(await sql_qt_composite.PickAsync()),
-  new PathBasedTableStrategy(await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root")))
+  new MongoDBStrategy(
+    await mongo_composite.PickAsync()
+  ),
+  new ElasticsearchStrategy(
+    await es_composite.AddAsync(new ElasticStack.Models.Organization("root") { Id = "1" }, enableGuid: false)
+  ),
+  new ClosureTableStrategy(
+    await sql_qt_composite.PickAsync()
+  ),
+  new PathBasedTableStrategy(
+    await sql_path_composite.AddAsync(new SQL.PathBased.Models.Organization("root"))
+  )
 ], config);
 
 await generator.GenerateTreesAsync();
